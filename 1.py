@@ -1,7 +1,13 @@
+# -*- coding=utf8 -*-
+
 import requests
+from bs4 import BeautifulSoup
+
 req = requests.get('https://www.baidu.com')
-requests.
-print req.headers['content-type']
-print req.encoding
-print req.content
-#print req.text
+content = req.content
+soup = BeautifulSoup(content,'html.parser')
+alla =  soup.find_all('a')
+for link in alla:
+	print link.get('href')
+
+#soup.get_text()
